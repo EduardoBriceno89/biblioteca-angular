@@ -6,20 +6,58 @@
 <div class="contenedor">
   <mat-card>
     <mat-card-content>
-      <form>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
         <h2>Ingresa tus datos</h2>
         <mat-form-field appearance="outline">
           <mat-label>Matricula</mat-label>
-          <input matInput placeholder="123456" required />
-          <mat-error>Por favor ingresa tu matricula</mat-error>
+          <input
+            matInput
+            placeholder="123456"
+            maxlength="8"
+            pattern="[0-9]*"
+            ngModel
+            name="matricula"
+            matricula
+            required
+            #matriculaInput="ngModel"
+          />
+          <mat-error *ngIf="matriculaInput.hasError('required')"
+            >Por favor ingresa tu matricula</mat-error
+          >
+          <mat-error
+            *ngIf="
+              !matriculaInput.hasError('required') &&
+              matriculaInput.invalid &&
+              (matriculaInput.dirty || matriculaInput.touched)
+            "
+            >Por favor ingresa una matricula valida</mat-error
+          >
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Contrasena</mat-label>
-          <input matInput type="password" required />
-          <mat-error>Por favor ingresa tu contrasena</mat-error>
+          <input
+            matInput
+            type="password"
+            minlength="8"
+            maxlength="60"
+            required
+            ngModel
+            name="contrasena"
+            #contrasenaInput="ngModel"
+          />
+          <mat-error
+            *ngIf="
+              contrasenaInput.invalid &&
+              (contrasenaInput.dirty || contrasenaInput.touched)
+            "
+          >
+            La contraseña debe tener al menos 8 caracteres
+          </mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary">Iniciar sesion</button>
+        <button mat-raised-button color="primary" [disabled]="f.invalid">
+          Iniciar sesion
+        </button>
       </form>
     </mat-card-content>
   </mat-card>

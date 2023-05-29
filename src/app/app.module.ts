@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 // Angular Material Imports
 import { MatInputModule } from '@angular/material/input';
@@ -18,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
   declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
