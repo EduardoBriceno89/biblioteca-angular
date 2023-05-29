@@ -1,0 +1,26 @@
+<section>
+  <mat-toolbar color="primary">
+    <span>Biblioteca Digital</span>
+  </mat-toolbar>
+</section>
+<div class="contenedor">
+  <mat-card>
+    <mat-card-content>
+      <form>
+        <h2>Ingresa tus datos</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Matricula</mat-label>
+          <input matInput placeholder="123456" required />
+          <mat-error>Por favor ingresa tu matricula</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contrasena</mat-label>
+          <input matInput type="password" required />
+          <mat-error>Por favor ingresa tu contrasena</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Iniciar sesion</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
