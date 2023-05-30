@@ -14,9 +14,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { PanelComponent } from './componentes/panel/panel.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, PanelComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -28,6 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
