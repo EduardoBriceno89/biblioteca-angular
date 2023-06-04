@@ -1,11 +1,7 @@
 <section class="navbar">
   <mat-toolbar color="primary">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-      <mat-icon>menu</mat-icon>
+    <button mat-icon-button class="example-icon">
+      <mat-icon fxHide.lt-xl="true" fxHide.lt-md="false">menu</mat-icon>
     </button>
     <span>Biblioteca Digital</span>
     <span class="example-spacer"></span>
@@ -15,6 +11,7 @@
       type="search"
       placeholder="Buscar documento"
       class="search-document"
+      fxHide.lt-md="true"
     />
     <button
       mat-icon-button
