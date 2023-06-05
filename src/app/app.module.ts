@@ -27,9 +27,11 @@ import { CustomMatPaginatorIntl } from './paginator-es';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { AdminDashboardComponent } from './componentes/admin-dashboard/admin-dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, PanelComponent],
+  declarations: [AppComponent, LoginComponent, PanelComponent, AdminDashboardComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -49,6 +51,7 @@ import { MatListModule } from '@angular/material/list';
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
+    MatGridListModule,
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
   bootstrap: [AppComponent],

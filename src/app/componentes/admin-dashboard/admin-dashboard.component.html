@@ -1,0 +1,70 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+    <mat-icon fxHide.lt-xl="true" fxHide.lt-md="false">menu</mat-icon>
+  </button>
+  <span>Biblioteca Digital Administrador</span>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+    matTooltip="Usuarios"
+    fxHide.lt-md="true"
+  >
+    <mat-icon>group</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+    matTooltip="Documentos"
+    fxHide.lt-md="true"
+  >
+    <mat-icon>description</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="push">
+    <mat-nav-list>
+      <button mat-menu-item><mat-icon>group</mat-icon>Usuarios</button>
+      <button mat-menu-item><mat-icon>description</mat-icon>Documentos</button>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div>
+      <div class="grid-container">
+        <h1 class="mat-h1">Dashboard</h1>
+        <mat-grid-list cols="2" rowHeight="350px">
+          <mat-grid-tile
+            *ngFor="let card of cards | async"
+            [colspan]="card.cols"
+            [rowspan]="card.rows"
+          >
+            <mat-card class="dashboard-card">
+              <mat-card-header>
+                <mat-card-title>
+                  {{ card.title }}
+                  <button
+                    mat-icon-button
+                    class="more-button"
+                    [matMenuTriggerFor]="menu"
+                    aria-label="Toggle menu"
+                  >
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu" xPosition="before">
+                    <button mat-menu-item>Expand</button>
+                    <button mat-menu-item>Remove</button>
+                  </mat-menu>
+                </mat-card-title>
+              </mat-card-header>
+              <mat-card-content class="dashboard-card-content">
+                <div>Card Content Here</div>
+              </mat-card-content>
+            </mat-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
