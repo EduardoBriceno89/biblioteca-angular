@@ -1,4 +1,4 @@
-.navbar {
+mat-toolbar {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -48,12 +48,6 @@ h1 {
   background-size: cover;
 }
 
-.paginador {
-  position: sticky;
-  bottom: 0;
-  z-index: 1;
-}
-
 @media screen and (max-width: 600px) {
   .example-card {
     margin: 10px 0;
@@ -61,3 +55,9 @@ h1 {
   }
 }
 /* Fin Estilos para las cards */
+
+/* mat-paginator {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+} */

@@ -24,6 +24,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CustomMatPaginatorIntl } from './paginator-es';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, PanelComponent],
@@ -43,6 +46,9 @@ import { CustomMatPaginatorIntl } from './paginator-es';
     MatTooltipModule,
     MatAutocompleteModule,
     MatSnackBarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
   bootstrap: [AppComponent],
