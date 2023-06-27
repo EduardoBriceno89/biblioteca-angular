@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from 'src/app/servicios/api.service';
 
 @Component({
   selector: 'app-login',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  onSubmit(f: any) {}
+  constructor(private apiService: ApiService) {}
+  matricula: string = '';
+  password: string = '';
+
+  onSubmit() {
+    const { matricula, password } = this;
+    this.apiService.login(matricula, password);
+  }
 }

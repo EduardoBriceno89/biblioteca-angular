@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpInterceptor } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,12 +31,19 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AdminDashboardComponent } from './componentes/admin-dashboard/admin-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { TokenInterceptor } from './servicios/token.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, PanelComponent, AdminDashboardComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    PanelComponent,
+    AdminDashboardComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     FlexLayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -53,7 +62,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatListModule,
     MatGridListModule,
   ],
-  providers: [{ provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

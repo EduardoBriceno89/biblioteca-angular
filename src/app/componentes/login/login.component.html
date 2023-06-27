@@ -6,7 +6,7 @@
 <div class="contenedor">
   <mat-card>
     <mat-card-content>
-      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <form #f="ngForm" (ngSubmit)="onSubmit()">
         <h2>Ingresa tus datos</h2>
         <mat-form-field appearance="outline">
           <mat-label>Matrícula</mat-label>
@@ -16,7 +16,7 @@
             minlength="8"
             maxlength="8"
             pattern="[0-9]*"
-            ngModel
+            [(ngModel)]="matricula"
             name="matricula"
             matricula
             required
@@ -43,8 +43,8 @@
             minlength="8"
             maxlength="60"
             required
-            ngModel
-            name="contrasena"
+            [(ngModel)]="password"
+            name="password"
             #contrasenaInput="ngModel"
           />
           <mat-error *ngIf="contrasenaInput.hasError('required')"

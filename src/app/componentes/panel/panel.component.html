@@ -1,6 +1,12 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
-    <mat-icon fxHide.lt-xl="true" fxHide.lt-md="false">menu</mat-icon>
+  <button
+    fxHide.lt-xl="true"
+    fxHide.lt-md="false"
+    mat-icon-button
+    class="example-icon"
+    (click)="drawer.toggle()"
+  >
+    <mat-icon>menu</mat-icon>
   </button>
   <span>Biblioteca Digital</span>
   <span class="example-spacer"></span>
@@ -32,14 +38,18 @@
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item><mat-icon>settings</mat-icon> Ajustes</button>
-    <button mat-menu-item><mat-icon>logout</mat-icon> Cerrar sesión</button>
+    <button mat-menu-item (click)="makeLogout()">
+      <mat-icon>logout</mat-icon> Cerrar sesión
+    </button>
   </mat-menu>
 </mat-toolbar>
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="push">
     <mat-nav-list>
       <button mat-menu-item><mat-icon>favorite</mat-icon>Mis favoritos</button>
-      <button mat-menu-item><mat-icon>account_circle</mat-icon>Mi cuenta</button>
+      <button mat-menu-item>
+        <mat-icon>account_circle</mat-icon>Mi cuenta
+      </button>
       <mat-form-field class="search-field">
         <input matInput type="search" placeholder="Buscar documento" />
       </mat-form-field>
