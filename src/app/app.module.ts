@@ -32,6 +32,14 @@ import { MatListModule } from '@angular/material/list';
 import { AdminDashboardComponent } from './componentes/admin-dashboard/admin-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TokenInterceptor } from './servicios/token.interceptor';
+import { NavigationComponent } from './componentes/admin-dashboard/navigation/navigation.component';
+import { UsersComponent } from './componentes/admin-dashboard/users/users.component';
+import { FilesComponent } from './componentes/admin-dashboard/files/files.component';
+import { TableUsersComponent } from './componentes/admin-dashboard/users/table-users/table-users.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { TableFilesComponent } from './componentes/admin-dashboard/files/table-files/table-files.component';
+import { NavigationPanelComponent } from './componentes/panel/navigation-panel/navigation-panel.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +47,12 @@ import { TokenInterceptor } from './servicios/token.interceptor';
     LoginComponent,
     PanelComponent,
     AdminDashboardComponent,
+    NavigationComponent,
+    UsersComponent,
+    FilesComponent,
+    TableUsersComponent,
+    TableFilesComponent,
+    NavigationPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +75,8 @@ import { TokenInterceptor } from './servicios/token.interceptor';
     MatSidenavModule,
     MatListModule,
     MatGridListModule,
+    MatTableModule,
+    MatSortModule,
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl },

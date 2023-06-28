@@ -7,7 +7,7 @@ export class CustomMatPaginatorIntl extends MatPaginatorIntl {
     super();
   }
 
-  override itemsPerPageLabel = 'Documentos por página';
+  override itemsPerPageLabel = 'Elementos por página';
   override nextPageLabel = 'Página siguiente';
   override previousPageLabel = 'Página anterior';
 

@@ -21,17 +21,7 @@ export class ApiService {
     const data = { matricula, password };
     return this.http.post(`${this.apiURL}users/login`, data).subscribe(
       (res: any) => {
-        const expirationDate = new Date();
-        expirationDate.setHours(expirationDate.getHours() + 1); // la cookie del token expira en 1 hora
-        this.cookieService.set(
-          'token',
-          res.token,
-          expirationDate,
-          '/',
-          'localhost',
-          true,
-          'Strict'
-        );
+        this.cookieService.set('token', res.token);
 
         this.router.navigate(['/panel']);
       },
