@@ -46,4 +46,14 @@ export class ApiService {
   getFiles(): Observable<any> {
     return this.http.get(`${this.apiURL}files/get-files`);
   }
+
+  //admin crud
+
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiURL}users/get-users`);
+  }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`${this.apiURL}users/delete/${id}`);
+  }
 }

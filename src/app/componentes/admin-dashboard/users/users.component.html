@@ -1,1 +1,63 @@
-<app-table-users></app-table-users>
+<div class="container">
+  <table mat-table [dataSource]="users" class="mat-table">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>ID</th>
+      <td mat-cell class="mat-cell" *matCellDef="let user">{{ user._id }}</td>
+    </ng-container>
+
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>Nombre</th>
+      <td mat-cell class="mat-cell" *matCellDef="let user">{{ user.name }}</td>
+    </ng-container>
+
+    <!-- Columna Matrícula -->
+    <ng-container matColumnDef="matricula">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>
+        Matrícula
+      </th>
+      <td mat-cell class="mat-cell" *matCellDef="let user">
+        {{ user.matricula }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>Role</th>
+      <td mat-cell class="mat-cell" *matCellDef="let user">{{ user.role }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>
+        Acciones
+      </th>
+      <td mat-cell class="mat-cell" *matCellDef="let user">
+        <button mat-icon-button color="primary" matTooltip="Editar">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="confirmarEliminacion(user)"
+          matTooltip="Eliminar"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Definir las columnas en la tabla -->
+    <tr
+      mat-header-row
+      class="mat-header-row"
+      *matHeaderRowDef="['id', 'name', 'matricula', 'role', 'acciones']"
+    ></tr>
+    <tr
+      mat-row
+      class="mat-row"
+      *matRowDef="
+        let row;
+        columns: ['id', 'name', 'matricula', 'role', 'acciones']
+      "
+    ></tr>
+  </table>
+</div>
