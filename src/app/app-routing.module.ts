@@ -16,8 +16,8 @@ const routes: Routes = [
     component: AdminDashboardComponent,
     canActivate: [authGuard], // rutas protegidas
     children: [
-      { path: 'users', component: UsersComponent },
-      { path: 'files', component: FilesComponent },
+      { path: 'users', component: UsersComponent, canActivate: [authGuard] },
+      { path: 'files', component: FilesComponent, canActivate: [authGuard] },
     ],
   },
   // route para una ruta 404

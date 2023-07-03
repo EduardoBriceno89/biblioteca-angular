@@ -1,4 +1,7 @@
 <div class="container">
+  <button mat-mini-fab matTooltip="Agregar usuario" color="primary" (click)="openForm()">
+    <mat-icon>add</mat-icon>
+  </button>
   <table mat-table [dataSource]="users" class="mat-table">
     <ng-container matColumnDef="id">
       <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>ID</th>

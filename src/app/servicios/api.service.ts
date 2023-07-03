@@ -22,7 +22,6 @@ export class ApiService {
     return this.http.post(`${this.apiURL}users/login`, data).subscribe(
       (res: any) => {
         this.cookieService.set('token', res.token);
-
         this.router.navigate(['/panel']);
       },
       (error) => {
@@ -31,10 +30,10 @@ export class ApiService {
     );
   }
 
-  //is logged in?
-  loggedIn() {
-    return !!this.cookieService.get('token');
-  }
+  // //is logged in?
+  // loggedIn() {
+  //   return !!this.cookieService.get('token');
+  // }
 
   //logout
   logout() {
@@ -48,6 +47,10 @@ export class ApiService {
   }
 
   //admin crud
+
+  addUser(data: any): Observable<any> {
+    return this.http.post(`${this.apiURL}users/register`, data);
+  }
 
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiURL}users/get-users`);

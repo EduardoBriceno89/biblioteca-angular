@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/servicios/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmarEliminacionComponent } from './dialogs/confirmar-eliminacion.component';
+import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 
 @Component({
   selector: 'app-users',
@@ -22,6 +23,19 @@ export class UsersComponent implements OnInit {
     this.apiService.getUsers().subscribe((data: any) => {
       this.users = data.users;
     });
+  }
+
+  openForm(){
+    const dialogRef = this.dialog.open(CrearUsuarioComponent, {
+      width: '400px',
+      height: '550px',
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.apiService.getUsers().subscribe((data: any) => {
+        this.users = data.users;
+      })
+    })
   }
 
   eliminarUsuario(user: any) {

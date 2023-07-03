@@ -9,6 +9,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/admin/users">Usuarios</a>
       <a mat-list-item routerLink="/admin/files">Archivos</a>
+      <a mat-list-item routerLink="/panel">Panel</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -27,7 +28,6 @@
       <button
         mat-icon-button
         class="example-icon favorite-icon"
-        aria-label="Example icon-button with heart icon"
         matTooltip="Usuarios"
         fxHide.lt-md="true"
         routerLink="/admin/users"
@@ -37,12 +37,20 @@
       <button
         mat-icon-button
         class="example-icon favorite-icon"
-        aria-label="Example icon-button with heart icon"
         matTooltip="Documentos"
         fxHide.lt-md="true"
         routerLink="/admin/files"
       >
         <mat-icon>description</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="example-icon favorite-icon"
+        matTooltip="Panel"
+        fxHide.lt-md="true"
+        routerLink="/panel"
+      >
+        <mat-icon>book</mat-icon>
       </button>
     </mat-toolbar>
     <router-outlet></router-outlet>

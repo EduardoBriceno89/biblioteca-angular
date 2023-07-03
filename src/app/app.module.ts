@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PanelComponent } from './componentes/panel/panel.component';
 import { ConfirmarEliminacionComponent } from './componentes/admin-dashboard/users/dialogs/confirmar-eliminacion.component';
@@ -14,6 +14,7 @@ import { ConfirmarEliminacionComponent } from './componentes/admin-dashboard/use
 // Angular Material Modules
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -39,6 +40,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { NavigationPanelComponent } from './componentes/panel/navigation-panel/navigation-panel.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CrearUsuarioComponent } from './componentes/admin-dashboard/users/crear-usuario/crear-usuario.component';
 
 @NgModule({
   declarations: [
@@ -51,16 +53,19 @@ import { MatDialogModule } from '@angular/material/dialog';
     FilesComponent,
     NavigationPanelComponent,
     ConfirmarEliminacionComponent,
+    CrearUsuarioComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
