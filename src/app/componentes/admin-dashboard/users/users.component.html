@@ -1,20 +1,23 @@
 <div class="container">
-  <button mat-mini-fab matTooltip="Agregar usuario" color="primary" (click)="openFormCrear()">
+  <button
+    mat-mini-fab
+    matTooltip="Agregar usuario"
+    color="primary"
+    (click)="openFormCrear()"
+  >
     <mat-icon>add</mat-icon>
   </button>
-  <table mat-table [dataSource]="users" class="mat-table">
+  <table mat-table [dataSource]="dataSource" class="mat-table">
     <ng-container matColumnDef="id">
       <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>ID</th>
       <td mat-cell class="mat-cell" *matCellDef="let user">{{ user._id }}</td>
     </ng-container>
 
-    <!-- Columna Nombre -->
     <ng-container matColumnDef="name">
       <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>Nombre</th>
       <td mat-cell class="mat-cell" *matCellDef="let user">{{ user.name }}</td>
     </ng-container>
 
-    <!-- Columna Matrícula -->
     <ng-container matColumnDef="matricula">
       <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>
         Matrícula
@@ -34,7 +37,12 @@
         Acciones
       </th>
       <td mat-cell class="mat-cell" *matCellDef="let user">
-        <button mat-icon-button color="primary" matTooltip="Editar" (click)="openFormEditar(user)">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Editar"
+          (click)="openFormEditar(user)"
+        >
           <mat-icon>edit</mat-icon>
         </button>
         <button
@@ -48,7 +56,6 @@
       </td>
     </ng-container>
 
-    <!-- Definir las columnas en la tabla -->
     <tr
       mat-header-row
       class="mat-header-row"
@@ -63,4 +70,6 @@
       "
     ></tr>
   </table>
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
 </div>

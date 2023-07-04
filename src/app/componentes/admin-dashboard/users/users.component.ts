@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ApiService } from 'src/app/servicios/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmarEliminacionComponent } from './dialogs/confirmar-eliminacion.component';
 import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, AfterViewInit {
   users: any[] = [];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  dataSource: MatTableDataSource<any> = new MatTableDataSource();
 
   constructor(
     private apiService: ApiService,
@@ -20,10 +24,16 @@ export class UsersComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.apiService.getUsers().subscribe((data: any) => {
       this.users = data.users;
+      this.dataSource = new MatTableDataSource(this.users);
+      this.dataSource.paginator = this.paginator;
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
   openFormCrear() {
@@ -32,9 +42,11 @@ export class UsersComponent implements OnInit {
       height: '550px',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe(() => {
       this.apiService.getUsers().subscribe((data: any) => {
         this.users = data.users;
+        this.dataSource.data = this.users;
+        this.dataSource.paginator = this.paginator;
       });
     });
   }
@@ -50,6 +62,8 @@ export class UsersComponent implements OnInit {
       if (result === 'actualizar') {
         this.apiService.getUsers().subscribe((data: any) => {
           this.users = data.users;
+          this.dataSource.data = this.users;
+          this.dataSource.paginator = this.paginator;
         });
       }
     });
@@ -66,6 +80,8 @@ export class UsersComponent implements OnInit {
         // Vuelve a cargar los usuarios después de eliminar
         this.apiService.getUsers().subscribe((data: any) => {
           this.users = data.users;
+          this.dataSource.data = this.users;
+          this.dataSource.paginator = this.paginator;
         });
       },
       () => {
