@@ -56,6 +56,10 @@ export class ApiService {
     return this.http.get<any[]>(`${this.apiURL}users/get-users`);
   }
 
+  updateUser(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.apiURL}users/edit/${id}`, data);
+  }
+
   deleteUser(id: string): Observable<any> {
     return this.http.delete(`${this.apiURL}users/delete/${id}`);
   }

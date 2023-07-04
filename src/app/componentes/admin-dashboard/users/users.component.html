@@ -1,5 +1,5 @@
 <div class="container">
-  <button mat-mini-fab matTooltip="Agregar usuario" color="primary" (click)="openForm()">
+  <button mat-mini-fab matTooltip="Agregar usuario" color="primary" (click)="openFormCrear()">
     <mat-icon>add</mat-icon>
   </button>
   <table mat-table [dataSource]="users" class="mat-table">
@@ -34,7 +34,7 @@
         Acciones
       </th>
       <td mat-cell class="mat-cell" *matCellDef="let user">
-        <button mat-icon-button color="primary" matTooltip="Editar">
+        <button mat-icon-button color="primary" matTooltip="Editar" (click)="openFormEditar(user)">
           <mat-icon>edit</mat-icon>
         </button>
         <button

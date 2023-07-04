@@ -41,6 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { NavigationPanelComponent } from './componentes/panel/navigation-panel/navigation-panel.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CrearUsuarioComponent } from './componentes/admin-dashboard/users/crear-usuario/crear-usuario.component';
+import { EditarUsuarioComponent } from '../app/componentes/admin-dashboard/users/editar-usuario/editar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CrearUsuarioComponent } from './componentes/admin-dashboard/users/crear
     NavigationPanelComponent,
     ConfirmarEliminacionComponent,
     CrearUsuarioComponent,
+    EditarUsuarioComponent,
   ],
   imports: [
     BrowserModule,
