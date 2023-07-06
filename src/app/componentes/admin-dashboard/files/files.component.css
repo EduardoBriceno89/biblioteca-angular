@@ -1,0 +1,80 @@
+.container {
+  overflow-x: auto;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.mat-table {
+  width: 100%;
+  table-layout: auto;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 10px;
+  white-space: normal;
+}
+
+.mat-header-row,
+.mat-row {
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+}
+
+/* Estilos para el modal */
+.mat-dialog-container {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+}
+
+/* Estilos para el título del modal */
+.mat-dialog-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Estilos para el contenido del modal */
+.mat-dialog-content {
+  margin-bottom: 16px;
+}
+
+/* Estilos para los botones del modal */
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* estilos form editar */
+
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.mat-dialog-actions button {
+  min-width: 100px;
+}

@@ -1,1 +1,52 @@
-<p>files works!</p>
+<div class="container">
+  <button mat-mini-fab matTooltip="Agregar documento" color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+  <table mat-table [dataSource]="dataSource" class="mat-table">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>ID</th>
+      <td mat-cell class="mat-cell" *matCellDef="let files">{{ files._id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>Título</th>
+      <td mat-cell class="mat-cell" *matCellDef="let files">
+        {{ files.tittle }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="url">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>URL</th>
+      <td mat-cell class="mat-cell" *matCellDef="let files">
+        {{ files.url }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>
+        Acciones
+      </th>
+      <td mat-cell class="mat-cell" *matCellDef="let files">
+        <button mat-icon-button color="primary" matTooltip="Editar">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="Eliminar">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr
+      mat-header-row
+      class="mat-header-row"
+      *matHeaderRowDef="['id', 'titulo', 'url', 'acciones']"
+    ></tr>
+    <tr
+      mat-row
+      class="mat-row"
+      *matRowDef="let row; columns: ['id', 'titulo', 'url', 'acciones']"
+    ></tr>
+  </table>
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>

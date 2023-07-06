@@ -41,12 +41,7 @@ export class ApiService {
     this.router.navigate(['/login']);
   }
 
-  //files
-  getFiles(): Observable<any> {
-    return this.http.get(`${this.apiURL}files/get-files`);
-  }
-
-  //admin crud
+  //admin crud for users
 
   addUser(data: any): Observable<any> {
     return this.http.post(`${this.apiURL}users/register`, data);
@@ -62,5 +57,11 @@ export class ApiService {
 
   deleteUser(id: string): Observable<any> {
     return this.http.delete(`${this.apiURL}users/delete/${id}`);
+  }
+
+  //admin crud for files
+
+  getFiles(): Observable<any> {
+    return this.http.get(`${this.apiURL}files/get-files`);
   }
 }
