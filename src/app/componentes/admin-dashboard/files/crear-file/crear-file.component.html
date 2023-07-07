@@ -1,0 +1,53 @@
+<form [formGroup]="myForm" enctype="multipart/form-data">
+  <h1 mat-dialog-title>Agregar archivo</h1>
+  <div mat-dialog-content class="mat-dialog-content">
+    <mat-form-field class="mat-form-field">
+      <mat-label>Título</mat-label>
+      <input
+        type="text"
+        minlength="3"
+        maxlength="50"
+        placeholder="Informática II"
+        formControlName="tittle"
+        matInput
+        required
+        pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]*"
+      />
+      <mat-error *ngIf="myForm.get('tittle')?.hasError('required')"
+        >El título es obligatorio</mat-error
+      >
+      <mat-error *ngIf="myForm.get('tittle')?.hasError('minlength')"
+        >El título debe tener al menos 3 caracteres</mat-error
+      >
+      <mat-error *ngIf="myForm.get('tittle')?.hasError('maxlength')"
+        >El título no puede tener más de 50 caracteres</mat-error
+      >
+      <mat-error *ngIf="myForm.get('tittle')?.hasError('pattern')"
+        >El título solo debe tener caracteres</mat-error
+      >
+    </mat-form-field>
+    <label for="fileInput" class="file-input-button">
+      <span *ngIf="selectedFile">{{ selectedFile }}</span>
+      <span *ngIf="!selectedFile">Seleccionar archivo</span>
+      <input
+        type="file"
+        id="fileInput"
+        formControlName="filename"
+        accept=".pdf"
+        required
+        (change)="onFileSelected($event)"
+      />
+    </label>
+  </div>
+  <div mat-dialog-actions class="mat-dialog-actions">
+    <button mat-raised-button color="warn" (click)="close()">Cerrar</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addFile()"
+      [disabled]="myForm.invalid"
+    >
+      Subir
+    </button>
+  </div>
+</form>

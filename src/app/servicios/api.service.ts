@@ -61,7 +61,19 @@ export class ApiService {
 
   //admin crud for files
 
+  addFile(data: any): Observable<any> {
+    return this.http.post(`${this.apiURL}files/create-file`, data);
+  }
+
   getFiles(): Observable<any> {
     return this.http.get(`${this.apiURL}files/get-files`);
+  }
+
+  updateFile(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.apiURL}files/edit-file/${id}`, data);
+  }
+
+  deleteFile(id: string): Observable<any> {
+    return this.http.delete(`${this.apiURL}files/delete-file/${id}`);
   }
 }

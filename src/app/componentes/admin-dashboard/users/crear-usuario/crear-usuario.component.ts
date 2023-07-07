@@ -28,7 +28,7 @@ export class CrearUsuarioComponent implements OnInit {
   });
 
   saveUser() {
-    this.api.addUser(this.myForm.value).subscribe((res) => {
+    this.api.addUser(this.myForm.value).subscribe(() => {
       this.snackBar.open('Usuario creado correctamente', 'Cerrar', {
         duration: 3000,
       });

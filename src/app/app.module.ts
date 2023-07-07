@@ -42,6 +42,9 @@ import { NavigationPanelComponent } from './componentes/panel/navigation-panel/n
 import { MatDialogModule } from '@angular/material/dialog';
 import { CrearUsuarioComponent } from './componentes/admin-dashboard/users/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from '../app/componentes/admin-dashboard/users/editar-usuario/editar-usuario.component';
+import { CrearFileComponent } from './componentes/admin-dashboard/files/crear-file/crear-file.component';
+import { EditarFileComponent } from './componentes/admin-dashboard/files/editar-file/editar-file.component';
+import { ConfirmarEliminacionFileComponent } from './componentes/admin-dashboard/files/dialogs/confirmar-eliminacion-file.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import { EditarUsuarioComponent } from '../app/componentes/admin-dashboard/users
     ConfirmarEliminacionComponent,
     CrearUsuarioComponent,
     EditarUsuarioComponent,
+    CrearFileComponent,
+    EditarFileComponent,
+    ConfirmarEliminacionFileComponent,
   ],
   imports: [
     BrowserModule,
