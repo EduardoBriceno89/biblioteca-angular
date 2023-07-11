@@ -8,7 +8,6 @@ import { LoginComponent } from './componentes/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PanelComponent } from './componentes/panel/panel.component';
 import { ConfirmarEliminacionComponent } from './componentes/admin-dashboard/users/dialogs/confirmar-eliminacion.component';
 
 // Angular Material Modules
@@ -38,24 +37,23 @@ import { UsersComponent } from './componentes/admin-dashboard/users/users.compon
 import { FilesComponent } from './componentes/admin-dashboard/files/files.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import { NavigationPanelComponent } from './componentes/panel/navigation-panel/navigation-panel.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CrearUsuarioComponent } from './componentes/admin-dashboard/users/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from '../app/componentes/admin-dashboard/users/editar-usuario/editar-usuario.component';
 import { CrearFileComponent } from './componentes/admin-dashboard/files/crear-file/crear-file.component';
 import { EditarFileComponent } from './componentes/admin-dashboard/files/editar-file/editar-file.component';
 import { ConfirmarEliminacionFileComponent } from './componentes/admin-dashboard/files/dialogs/confirmar-eliminacion-file.component';
+import { PanelComponent } from './componentes/panel/panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PanelComponent,
     AdminDashboardComponent,
     NavigationComponent,
     UsersComponent,
     FilesComponent,
-    NavigationPanelComponent,
+    PanelComponent,
     ConfirmarEliminacionComponent,
     CrearUsuarioComponent,
     EditarUsuarioComponent,
