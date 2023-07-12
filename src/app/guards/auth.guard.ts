@@ -1,16 +1,21 @@
 import { CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
-import { ApiService } from '../servicios/api.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import jwt_decode from 'jwt-decode';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const apiService = inject(ApiService);
   const router = inject(Router);
+  const cookie = inject(CookieService);
+  const token = cookie.get('token') as string;
+  const tokenDecoded = jwt_decode(token) as { role: string };
+  const userRole = tokenDecoded.role;
 
-  // if (apiService.loggedIn()) {
-  //   return true;
-  // }
-
-  // router.navigate(['/login']);
-  return true;
+  //si no es admin, redirige a la ruta panel
+  if (userRole == 'admin') {
+    return true;
+  } else {
+    router.navigate(['/panel']);
+    return false;
+  }
 };

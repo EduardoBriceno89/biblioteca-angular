@@ -11,6 +11,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { ApiService } from 'src/app/servicios/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-panel',
@@ -20,14 +22,12 @@ import { CookieService } from 'ngx-cookie-service';
 export class PanelComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   filesArray: any = [];
-  isAdmin: boolean;
 
   constructor(
     private apiService: ApiService,
-    private cookieService: CookieService
-  ) {
-    this.isAdmin = this.cookieService.get('isAdmin') === 'true' ? true : false;
-  }
+    private cookieService: CookieService,
+    private router: Router
+  ) {}
   private breakpointObserver = inject(BreakpointObserver);
 
   ngOnInit(): void {
@@ -41,7 +41,16 @@ export class PanelComponent implements OnInit, AfterViewInit {
   }
 
   makeLogout() {
-    this.apiService.logout();
+    this.cookieService.delete('token');
+    this.router.navigate(['/login']);
+  }
+
+  getRole(): boolean {
+    const token = this.cookieService.get('token') as string;
+    const tokenDecoded = jwt_decode(token) as { role: string };
+    const userRole = tokenDecoded.role;
+
+    return userRole == 'admin';
   }
 
   getFilesPerPage() {

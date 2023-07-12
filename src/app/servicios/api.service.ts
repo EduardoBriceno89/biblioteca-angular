@@ -17,7 +17,6 @@ export class ApiService {
   ) {}
 
   apiURL = 'http://localhost:3000/api/v1/';
-  private isAdmin: boolean = false;
 
   //login endpoint
   login(matricula: string, password: string) {
@@ -26,8 +25,6 @@ export class ApiService {
       (res: any) => {
         this.cookieService.set('token', res.token);
         this.router.navigate(['/panel']);
-        this.isAdmin = res.user.role == 'admin';
-        this.cookieService.set('isAdmin', this.isAdmin.toString());
       },
       (error) => {
         const errorMessage = error.error.error;
@@ -36,21 +33,6 @@ export class ApiService {
         });
       }
     );
-  }
-
-  getAdminStatus() {
-    return this.isAdmin;
-  }
-
-  // //is logged in?
-  // loggedIn() {
-  //   return !!this.cookieService.get('token');
-  // }
-
-  //logout
-  logout() {
-    this.cookieService.delete('token');
-    this.router.navigate(['/login']);
   }
 
   //admin crud for users
