@@ -1,27 +1,55 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { ApiService } from 'src/app/servicios/api.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-panel',
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.css'],
 })
-export class PanelComponent implements OnInit {
+export class PanelComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   filesArray: any = [];
-  user: string = '';
+  isAdmin: boolean;
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private cookieService: CookieService
+  ) {
+    this.isAdmin = this.cookieService.get('isAdmin') === 'true' ? true : false;
+  }
   private breakpointObserver = inject(BreakpointObserver);
 
   ngOnInit(): void {
     this.files();
   }
 
+  ngAfterViewInit(): void {
+    this.paginator.page.subscribe(() => {
+      this.getFilesPerPage();
+    });
+  }
+
   makeLogout() {
     this.apiService.logout();
+  }
+
+  getFilesPerPage() {
+    const pageIndex = this.paginator.pageIndex;
+    const pageSize = this.paginator.pageSize;
+    const startIndex = pageIndex * pageSize;
+    const endIndex = startIndex + pageSize;
+    const filesPerPage = this.filesArray.slice(startIndex, endIndex);
   }
 
   files() {

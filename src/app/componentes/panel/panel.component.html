@@ -35,6 +35,16 @@
       />
       <button
         mat-icon-button
+        class="example-icon"
+        matTooltip="Admin panel"
+        fxHide.lt-sm="true"
+        routerLink="/admin"
+        *ngIf="isAdmin"
+      >
+        <mat-icon>admin_panel_settings</mat-icon>
+      </button>
+      <button
+        mat-icon-button
         class="example-icon favorite-icon"
         aria-label="Example icon-button with heart icon"
         matTooltip="Mi cuenta"
@@ -77,9 +87,9 @@
       </section>
     </div>
     <mat-paginator
-      [length]="100"
-      [pageSize]="6"
-      [pageSizeOptions]="[6, 12, 24, 100]"
+      [length]="filesArray.length"
+      [pageSize]="5"
+      [pageSizeOptions]="[10, 20, 40]"
       aria-label="Select page"
     >
     </mat-paginator>

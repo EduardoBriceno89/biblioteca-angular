@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,12 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private snackBar: MatSnackBar
   ) {}
 
   apiURL = 'http://localhost:3000/api/v1/';
+  private isAdmin: boolean = false;
 
   //login endpoint
   login(matricula: string, password: string) {
@@ -23,11 +26,20 @@ export class ApiService {
       (res: any) => {
         this.cookieService.set('token', res.token);
         this.router.navigate(['/panel']);
+        this.isAdmin = res.user.role == 'admin';
+        this.cookieService.set('isAdmin', this.isAdmin.toString());
       },
       (error) => {
-        console.error('Ocurrio un error al iniciar sesion', error);
+        const errorMessage = error.error.error;
+        this.snackBar.open(errorMessage, 'Cerrar', {
+          duration: 3000,
+        });
       }
     );
+  }
+
+  getAdminStatus() {
+    return this.isAdmin;
   }
 
   // //is logged in?

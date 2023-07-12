@@ -73,7 +73,7 @@ export class FilesComponent implements OnInit, AfterViewInit {
 
     this.apiService.deleteFile(id).subscribe(
       () => {
-        this.snackBar.open('Usuario eliminado correctamente', 'Cerrar', {
+        this.snackBar.open('Archivo eliminado correctamente', 'Cerrar', {
           duration: 3000,
         });
         // Vuelve a cargar los usuarios después de eliminar
@@ -84,7 +84,7 @@ export class FilesComponent implements OnInit, AfterViewInit {
         });
       },
       () => {
-        this.snackBar.open('Error al eliminar el usuario', 'Cerrar', {
+        this.snackBar.open('Error al eliminar el archivo', 'Cerrar', {
           duration: 3000,
         });
       }
