@@ -26,9 +26,15 @@ export class PanelComponent implements OnInit, AfterViewInit {
   constructor(
     private apiService: ApiService,
     private cookieService: CookieService,
-    private router: Router
   ) {}
   private breakpointObserver = inject(BreakpointObserver);
+
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(
+      map((result) => result.matches),
+      shareReplay()
+    );
 
   ngOnInit(): void {
     this.files();
@@ -41,8 +47,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
   }
 
   makeLogout() {
-    this.cookieService.delete('token');
-    this.router.navigate(['/login']);
+    this.apiService.Logout();
   }
 
   getRole(): boolean {
@@ -77,11 +82,4 @@ export class PanelComponent implements OnInit, AfterViewInit {
         downloadLink.click();
       });
   }
-
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      shareReplay()
-    );
 }

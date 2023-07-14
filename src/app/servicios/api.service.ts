@@ -35,6 +35,15 @@ export class ApiService {
     );
   }
 
+  isLoggedIn() {
+    return !!this.cookieService.get('token');
+  }
+
+  Logout() {
+    this.cookieService.deleteAll();
+    this.router.navigate(['/login']);
+  }
+
   //admin crud for users
 
   addUser(data: any): Observable<any> {
