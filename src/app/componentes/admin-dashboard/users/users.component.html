@@ -8,11 +8,6 @@
     <mat-icon>add</mat-icon>
   </button>
   <table mat-table [dataSource]="dataSource" class="mat-table">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>ID</th>
-      <td mat-cell class="mat-cell" *matCellDef="let user">{{ user._id }}</td>
-    </ng-container>
-
     <ng-container matColumnDef="name">
       <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>Nombre</th>
       <td mat-cell class="mat-cell" *matCellDef="let user">{{ user.name }}</td>
@@ -59,14 +54,14 @@
     <tr
       mat-header-row
       class="mat-header-row"
-      *matHeaderRowDef="['id', 'name', 'matricula', 'role', 'acciones']"
+      *matHeaderRowDef="['name', 'matricula', 'role', 'acciones']"
     ></tr>
     <tr
       mat-row
       class="mat-row"
       *matRowDef="
         let row;
-        columns: ['id', 'name', 'matricula', 'role', 'acciones']
+        columns: ['name', 'matricula', 'role', 'acciones']
       "
     ></tr>
   </table>

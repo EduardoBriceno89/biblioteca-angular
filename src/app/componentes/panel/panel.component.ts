@@ -11,8 +11,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { ApiService } from 'src/app/servicios/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-panel',
@@ -22,10 +22,13 @@ import jwt_decode from 'jwt-decode';
 export class PanelComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   filesArray: any = [];
+  searchQuery: string = '';
+  filteredFiles: any = [];
+  selectedFile: any;
 
   constructor(
     private apiService: ApiService,
-    private cookieService: CookieService,
+    private cookieService: CookieService
   ) {}
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -37,6 +40,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
     );
 
   ngOnInit(): void {
+    this.filteredFiles = [...this.filesArray];
     this.files();
   }
 
@@ -81,5 +85,21 @@ export class PanelComponent implements OnInit, AfterViewInit {
         downloadLink.download = filename;
         downloadLink.click();
       });
+  }
+
+  filterFiles() {
+    this.filteredFiles =
+      this.searchQuery === ''
+        ? [...this.filesArray]
+        : this.filesArray.filter((file: any) =>
+            file.tittle.toLowerCase().includes(this.searchQuery.toLowerCase())
+          );
+  }
+
+  onFileSelected(event: MatAutocompleteSelectedEvent): void {
+    const selectedTitle = event.option.viewValue;
+    this.selectedFile = this.filesArray.find(
+      (file: any) => file.tittle === selectedTitle
+    );
   }
 }
