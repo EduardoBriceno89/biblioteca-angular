@@ -30,6 +30,7 @@ mat-toolbar {
   border: none;
   border-radius: 20px;
   height: 30px;
+  width: 200px;
   padding: 10px;
   outline: none;
 }

@@ -40,8 +40,8 @@ export class PanelComponent implements OnInit, AfterViewInit {
     );
 
   ngOnInit(): void {
-    this.filteredFiles = [...this.filesArray];
     this.files();
+    this.filteredFiles = this.filesArray.slice(0, 3); // Mostrar los primeros 3 documentos al inicio
   }
 
   ngAfterViewInit(): void {
@@ -88,12 +88,14 @@ export class PanelComponent implements OnInit, AfterViewInit {
   }
 
   filterFiles() {
-    this.filteredFiles =
-      this.searchQuery === ''
-        ? [...this.filesArray]
-        : this.filesArray.filter((file: any) =>
-            file.tittle.toLowerCase().includes(this.searchQuery.toLowerCase())
-          );
+    if (this.searchQuery === '') {
+      this.selectedFile = null; // Restablecer selectedFile
+      this.filteredFiles = this.filesArray.slice(0, 3); // Mostrar los primeros 3 documentos si la búsqueda está vacía
+    } else {
+      this.filteredFiles = this.filesArray.filter((file: any) =>
+        file.tittle.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
   }
 
   onFileSelected(event: MatAutocompleteSelectedEvent): void {

@@ -8,11 +8,6 @@
     <mat-icon>add</mat-icon>
   </button>
   <table mat-table [dataSource]="dataSource" class="mat-table">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>ID</th>
-      <td mat-cell class="mat-cell" *matCellDef="let files">{{ files._id }}</td>
-    </ng-container>
-
     <ng-container matColumnDef="titulo">
       <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>Título</th>
       <td mat-cell class="mat-cell" *matCellDef="let files">
@@ -54,12 +49,12 @@
     <tr
       mat-header-row
       class="mat-header-row"
-      *matHeaderRowDef="['id', 'titulo', 'url', 'acciones']"
+      *matHeaderRowDef="['titulo', 'url', 'acciones']"
     ></tr>
     <tr
       mat-row
       class="mat-row"
-      *matRowDef="let row; columns: ['id', 'titulo', 'url', 'acciones']"
+      *matRowDef="let row; columns: ['titulo', 'url', 'acciones']"
     ></tr>
   </table>
   <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
