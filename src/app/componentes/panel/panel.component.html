@@ -74,7 +74,7 @@
       <section class="cards">
         <mat-card
           class="example-card"
-          *ngFor="let file of selectedFile ? [selectedFile] : filesArray"
+          *ngFor="let file of filteredFiles"
         >
           <mat-card-header>
             <mat-card-title>{{ file.tittle }}</mat-card-title>
@@ -102,9 +102,8 @@
     <mat-paginator
       [length]="filesArray.length"
       [pageSize]="5"
-      [pageSizeOptions]="[10, 20, 40]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
+      [pageSizeOptions]="[5, 10]"
+      (page)="getFilesPerPage()"
+    ></mat-paginator>
   </mat-sidenav-content>
 </mat-sidenav-container>

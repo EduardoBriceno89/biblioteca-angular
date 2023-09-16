@@ -20,7 +20,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
             formControlName="tittle"
             matInput
             required
-            pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]*"
           />
           <mat-error *ngIf="myForm.get('tittle')?.hasError('required')"
             >El título es obligatorio</mat-error
@@ -30,9 +29,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
           >
           <mat-error *ngIf="myForm.get('tittle')?.hasError('maxlength')"
             >El título no puede tener más de 50 caracteres</mat-error
-          >
-          <mat-error *ngIf="myForm.get('tittle')?.hasError('pattern')"
-            >El título solo debe tener caracteres</mat-error
           >
         </mat-form-field>
       </div>
