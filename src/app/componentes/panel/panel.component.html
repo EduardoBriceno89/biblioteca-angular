@@ -4,12 +4,16 @@
     class="sidenav"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'push' : 'side'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
   >
     <mat-nav-list>
-      <a mat-list-item href="#">Mi Cuenta</a>
-      <a mat-list-item routerLink="/admin" *ngIf="getRole()">Admin panel</a>
-      <a mat-list-item (click)="makeLogout()">Cerrar sesión</a>
+      <button mat-menu-item><mat-icon>settings</mat-icon> Ajustes</button>
+      <button mat-menu-item *ngIf="getRole()" routerLink="/admin/users">
+        <mat-icon>admin_panel_settings</mat-icon> Admin panel
+      </button>
+      <button mat-menu-item (click)="makeLogout()">
+        <mat-icon>logout</mat-icon> Cerrar sesión
+      </button>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -23,14 +27,13 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Biblioteca Digital</span>
+      <span fxHide.lt-sm="true">Biblioteca Digital</span>
       <span class="example-spacer"></span>
       <input
         matInput
         type="search"
         placeholder="Buscar documento"
         class="search-document"
-        fxHide.lt-sm="true"
         [(ngModel)]="searchQuery"
         (input)="filterFiles()"
         [matAutocomplete]="auto"
@@ -48,7 +51,7 @@
         class="example-icon"
         matTooltip="Admin panel"
         fxHide.lt-sm="true"
-        routerLink="/admin"
+        routerLink="/admin/users"
         *ngIf="getRole()"
       >
         <mat-icon>admin_panel_settings</mat-icon>
@@ -72,10 +75,7 @@
     </mat-toolbar>
     <div style="text-align: center; min-height: 600px">
       <section class="cards">
-        <mat-card
-          class="example-card"
-          *ngFor="let file of filteredFiles"
-        >
+        <mat-card class="example-card" *ngFor="let file of filteredFiles">
           <mat-card-header>
             <mat-card-title>{{ file.tittle }}</mat-card-title>
           </mat-card-header>

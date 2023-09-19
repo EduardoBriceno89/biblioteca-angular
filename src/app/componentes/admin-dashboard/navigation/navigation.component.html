@@ -4,12 +4,18 @@
     class="sidenav"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'push' : 'side'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
   >
     <mat-nav-list>
-      <a mat-list-item routerLink="/admin/users">Usuarios</a>
-      <a mat-list-item routerLink="/admin/files">Archivos</a>
-      <a mat-list-item routerLink="/panel">Panel</a>
+      <button mat-menu-item routerLink="/admin/users">
+        <mat-icon>group</mat-icon> Usuarios
+      </button>
+      <button mat-menu-item routerLink="/admin/files">
+        <mat-icon>import_contacts</mat-icon> Archivos
+      </button>
+      <button mat-menu-item routerLink="/panel">
+        <mat-icon>home</mat-icon> Panel
+      </button>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -50,7 +56,7 @@
         fxHide.lt-md="true"
         routerLink="/panel"
       >
-        <mat-icon>book</mat-icon>
+        <mat-icon>home</mat-icon>
       </button>
     </mat-toolbar>
     <router-outlet></router-outlet>

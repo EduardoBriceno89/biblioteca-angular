@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { NavigationComponent } from './navigation/navigation.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin-dashboard',
