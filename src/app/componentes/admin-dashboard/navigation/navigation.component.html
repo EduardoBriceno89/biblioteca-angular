@@ -7,15 +7,13 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
   >
     <mat-nav-list>
-      <button mat-menu-item routerLink="/admin/users">
+      <a mat-list-item routerLink="/admin/users">
         <mat-icon>group</mat-icon> Usuarios
-      </button>
-      <button mat-menu-item routerLink="/admin/files">
-        <mat-icon>import_contacts</mat-icon> Archivos
-      </button>
-      <button mat-menu-item routerLink="/panel">
-        <mat-icon>home</mat-icon> Panel
-      </button>
+      </a>
+      <a mat-list-item routerLink="/admin/files">
+        <mat-icon>library_books</mat-icon> Archivos
+      </a>
+      <a mat-list-item routerLink="/panel"><mat-icon>home</mat-icon> Panel </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -23,6 +21,7 @@
       <button
         type="button"
         aria-label="Toggle sidenav"
+        fxHide.lt-sm="false"
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
@@ -35,7 +34,7 @@
         mat-icon-button
         class="example-icon favorite-icon"
         matTooltip="Usuarios"
-        fxHide.lt-md="true"
+        fxHide.lt-sm="true"
         routerLink="/admin/users"
       >
         <mat-icon>group</mat-icon>
@@ -44,7 +43,7 @@
         mat-icon-button
         class="example-icon favorite-icon"
         matTooltip="Documentos"
-        fxHide.lt-md="true"
+        fxHide.lt-sm="true"
         routerLink="/admin/files"
       >
         <mat-icon>description</mat-icon>
@@ -53,7 +52,7 @@
         mat-icon-button
         class="example-icon favorite-icon"
         matTooltip="Panel"
-        fxHide.lt-md="true"
+        fxHide.lt-sm="true"
         routerLink="/panel"
       >
         <mat-icon>home</mat-icon>

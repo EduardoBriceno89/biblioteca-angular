@@ -7,6 +7,14 @@
   >
     <mat-icon>add</mat-icon>
   </button>
+  <mat-form-field class="searchInput">
+    <input
+      matInput
+      placeholder="Buscar por nombre"
+      [(ngModel)]="searchText"
+      (input)="applyFilter()"
+    />
+  </mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-table">
     <ng-container matColumnDef="titulo">
       <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>Título</th>

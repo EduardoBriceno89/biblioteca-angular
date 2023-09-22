@@ -21,18 +21,19 @@ export class ApiService {
   //login endpoint
   login(matricula: string, password: string) {
     const data = { matricula, password };
-    return this.http.post(`${this.apiURL}users/login`, data).subscribe(
-      (res: any) => {
-        this.cookieService.set('token', res.token);
-        this.router.navigate(['/panel']);
-      },
-      (error) => {
-        const errorMessage = error.error.error;
-        this.snackBar.open(errorMessage, 'Cerrar', {
-          duration: 3000,
-        });
-      }
-    );
+    return this.http
+      .post(`${this.apiURL}users/login`, data, { withCredentials: true })
+      .subscribe(
+        (res: any) => {
+          this.router.navigate(['/panel']);
+        },
+        (error) => {
+          const errorMessage = error.error.error;
+          this.snackBar.open(errorMessage, 'Cerrar', {
+            duration: 3000,
+          });
+        }
+      );
   }
 
   isLoggedIn() {

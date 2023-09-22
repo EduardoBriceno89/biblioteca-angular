@@ -7,6 +7,14 @@
   >
     <mat-icon>add</mat-icon>
   </button>
+  <mat-form-field class="searchInput">
+    <input
+      matInput
+      placeholder="Buscar por nombre o matricula"
+      [(ngModel)]="searchText"
+      (input)="applyFilter()"
+    />
+  </mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-table">
     <ng-container matColumnDef="name">
       <th mat-header-cell class="mat-header-cell" *matHeaderCellDef>Nombre</th>
@@ -59,10 +67,7 @@
     <tr
       mat-row
       class="mat-row"
-      *matRowDef="
-        let row;
-        columns: ['name', 'matricula', 'role', 'acciones']
-      "
+      *matRowDef="let row; columns: ['name', 'matricula', 'role', 'acciones']"
     ></tr>
   </table>
   <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">

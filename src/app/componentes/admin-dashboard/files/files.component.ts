@@ -17,6 +17,7 @@ export class FilesComponent implements OnInit, AfterViewInit {
   files: any[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
+  searchText = '';
 
   constructor(
     private apiService: ApiService,
@@ -30,6 +31,12 @@ export class FilesComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource(this.files);
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  applyFilter() {
+    const filterValue = this.searchText.toLowerCase();
+
+    this.dataSource.filter = filterValue;
   }
 
   ngAfterViewInit(): void {

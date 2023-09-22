@@ -17,6 +17,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   users: any[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
+  searchText = '';
 
   constructor(
     private apiService: ApiService,
@@ -34,6 +35,12 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+  }
+
+  applyFilter() {
+    const filterValue = this.searchText.toLowerCase();
+
+    this.dataSource.filter = filterValue;
   }
 
   openFormCrear() {

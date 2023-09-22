@@ -36,25 +36,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
           >
         </mat-form-field>
         <mat-form-field class="mat-form-field">
-          <mat-label>Matrícula</mat-label>
-          <input
-            type="text"
-            minlength="8"
-            maxlength="8"
-            formControlName="matricula"
-            placeholder="12345678"
-            pattern="[0-9]*"
-            matInput
-            required
-          />
-          <mat-error *ngIf="myForm.get('matricula')?.hasError('required')"
-            >La matrícula no puede estar vacía</mat-error
-          >
-          <mat-error *ngIf="myForm.get('matricula')?.hasError('pattern')"
-            >La matrícula debe ser numérica</mat-error
-          >
-        </mat-form-field>
-        <mat-form-field class="mat-form-field">
           <mat-label>Contraseña</mat-label>
           <input
             type="password"
@@ -114,7 +95,6 @@ export class EditarUsuarioComponent {
   ) {
     this.myForm = this.fb.group({
       name: [this.user.name],
-      matricula: [this.user.matricula],
       password: [this.user.password],
       role: [this.user.role],
     });

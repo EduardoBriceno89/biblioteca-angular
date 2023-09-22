@@ -22,7 +22,6 @@ export class CrearUsuarioComponent implements OnInit {
 
   myForm = this.fb.group({
     name: this.fb.control(''),
-    matricula: this.fb.control(''),
     password: this.fb.control(''),
     role: this.fb.control(''),
   });
